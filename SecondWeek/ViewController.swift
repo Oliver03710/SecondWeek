@@ -45,15 +45,15 @@ class ViewController: UIViewController {
     // MARK: - Helper Functions
 
     func configureUI() {
-        configureButtons(oneImageButton, image: 1)
-        configureButtons(twoImageButton, image: 2)
-        configureButtons(threeImageButton, image: 3)
-        configureButtons(fourImageButton, image: 4)
-        configureButtons(fiveImageButton, image: 5)
-        configureButtons(sixImageButton, image: 6)
-        configureButtons(sevenImageButton, image: 7)
-        configureButtons(eightImageButton, image: 8)
-        configureButtons(nineImageButton, image: 9)
+//        configureButtons(oneImageButton, image: 1)
+//        configureButtons(twoImageButton, image: 2)
+//        configureButtons(threeImageButton, image: 3)
+//        configureButtons(fourImageButton, image: 4)
+//        configureButtons(fiveImageButton, image: 5)
+//        configureButtons(sixImageButton, image: 6)
+//        configureButtons(sevenImageButton, image: 7)
+//        configureButtons(eightImageButton, image: 8)
+//        configureButtons(nineImageButton, image: 9)
         
         configureLabels(oneLabel, emotion: "행복해", counts: 0)
         configureLabels(twoLabel, emotion: "사랑해", counts: 1)
@@ -65,7 +65,13 @@ class ViewController: UIViewController {
         configureLabels(eightLabel, emotion: "아파해", counts: 7)
         configureLabels(nineLabel, emotion: "슬퍼해", counts: 8)
 
+        let dic = [oneImageButton: 1, twoImageButton: 2, threeImageButton: 3, fourImageButton: 4, fiveImageButton: 5, sixImageButton: 6, sevenImageButton: 7, eightImageButton: 8, nineImageButton: 9]
         
+        let dicSorted = dic.sorted { $0.1 > $1.1 }
+        for (i, j) in dicSorted {
+                guard let button = i else { return }
+                configureButtons(button, image: j)
+        }
     }
     
     func configureButtons(_ button: UIButton, image: Int) {
