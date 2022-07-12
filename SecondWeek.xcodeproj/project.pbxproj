@@ -13,6 +13,7 @@
 		AD72A258287BA3EB005E066E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD72A256287BA3EB005E066E /* Main.storyboard */; };
 		AD72A25A287BA3EE005E066E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD72A259287BA3EE005E066E /* Assets.xcassets */; };
 		AD72A25D287BA3EE005E066E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD72A25B287BA3EE005E066E /* LaunchScreen.storyboard */; };
+		ADCB7DB1287D2133003C496D /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCB7DB0287D2133003C496D /* SegmentedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		AD72A259287BA3EE005E066E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD72A25C287BA3EE005E066E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD72A25E287BA3EE005E066E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADCB7DB0287D2133003C496D /* SegmentedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				AD72A252287BA3EB005E066E /* SceneDelegate.swift */,
 				AD72A254287BA3EB005E066E /* ViewController.swift */,
 				AD72A256287BA3EB005E066E /* Main.storyboard */,
+				ADCB7DB0287D2133003C496D /* SegmentedViewController.swift */,
 				AD72A259287BA3EE005E066E /* Assets.xcassets */,
 				AD72A25B287BA3EE005E066E /* LaunchScreen.storyboard */,
 				AD72A25E287BA3EE005E066E /* Info.plist */,
@@ -141,6 +144,7 @@
 				AD72A255287BA3EB005E066E /* ViewController.swift in Sources */,
 				AD72A251287BA3EB005E066E /* AppDelegate.swift in Sources */,
 				AD72A253287BA3EB005E066E /* SceneDelegate.swift in Sources */,
+				ADCB7DB1287D2133003C496D /* SegmentedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
