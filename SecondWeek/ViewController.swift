@@ -159,18 +159,8 @@ class ViewController: UIViewController {
 //            counts += 1
 //        }
         
-        
-        if UserDefaults.standard.array(forKey: "emotion counts") != nil {
-            
-            for i in 0...8 {
-                labelsArray[i].text = "\(emoArray[i].0) \(UserDefaults.standard.array(forKey: "emotion counts")?[i] ?? 0)"
-            }
-            
-        } else {
-            
-            for i in 0...8 {
-                labelsArray[i].text = "\(i)"
-            }
+        for i in 0...8 {
+            labelsArray[i].text = "\(emoArray[i].0) \(UserDefaults.standard.integer(forKey: "emotion\(i)"))"
         }
     }
     
@@ -191,11 +181,15 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: "데이터 저장", message: "하시겠습니까?", preferredStyle: .actionSheet)
 
     //  버튼
-        let ok = UIAlertAction(title: "확인", style: .default) { action -> Void in
-            UserDefaults.standard.set(self.countArray, forKey: "emotion counts")
+        let delete = UIAlertAction(title: "삭제", style: .destructive) { action -> Void in
+            for i in 0...8 {
+                UserDefaults.standard.removeObject(forKey: "emotion\(i)")
+                self.labelsArray[i].text = "\(self.emoArray[i].0) \(UserDefaults.standard.integer(forKey: "emotion\(i)"))"
+            }
         }
+        
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        let delete = UIAlertAction(title: "삭제", style: .destructive, handler: nil)
+        let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
         let copy = UIAlertAction(title: "복사", style: .default, handler: nil)
 
     //  1+2
@@ -250,32 +244,50 @@ class ViewController: UIViewController {
         
         switch sender.currentTitle ?? "" {
         case emoArray[0].0:
-            countArray[0] += 1
-            labelsArray[0].text = "\(emoArray[0].0) \(countArray[0])"
+            let currentValue = UserDefaults.standard.integer(forKey: "emotion0")
+            let updateValue = currentValue + 1
+            UserDefaults.standard.set(updateValue, forKey: "emotion0")
+            labelsArray[0].text = "\(emoArray[0].0) \(UserDefaults.standard.integer(forKey: "emotion0"))"
         case emoArray[1].0:
-            countArray[1] += 1
-            labelsArray[1].text = "\(emoArray[1].0) \(countArray[1])"
+            let currentValue = UserDefaults.standard.integer(forKey: "emotion1")
+            let updateValue = currentValue + 1
+            UserDefaults.standard.set(updateValue, forKey: "emotion1")
+            labelsArray[1].text = "\(emoArray[1].0) \(UserDefaults.standard.integer(forKey: "emotion1"))"
         case emoArray[2].0:
-            countArray[2] += 1
-            labelsArray[2].text = "\(emoArray[2].0) \(countArray[2])"
+            let currentValue = UserDefaults.standard.integer(forKey: "emotion2")
+            let updateValue = currentValue + 1
+            UserDefaults.standard.set(updateValue, forKey: "emotion2")
+            labelsArray[2].text = "\(emoArray[2].0) \(UserDefaults.standard.integer(forKey: "emotion2"))"
         case emoArray[3].0:
-            countArray[3] += 1
-            labelsArray[3].text = "\(emoArray[3].0) \(countArray[3])"
+            let currentValue = UserDefaults.standard.integer(forKey: "emotion3")
+            let updateValue = currentValue + 1
+            UserDefaults.standard.set(updateValue, forKey: "emotion3")
+            labelsArray[3].text = "\(emoArray[3].0) \(UserDefaults.standard.integer(forKey: "emotion3"))"
         case emoArray[4].0:
-            countArray[4] += 1
-            labelsArray[4].text = "\(emoArray[4].0) \(countArray[4])"
+            let currentValue = UserDefaults.standard.integer(forKey: "emotion4")
+            let updateValue = currentValue + 1
+            UserDefaults.standard.set(updateValue, forKey: "emotion4")
+            labelsArray[4].text = "\(emoArray[4].0) \(UserDefaults.standard.integer(forKey: "emotion4"))"
         case emoArray[5].0:
-            countArray[5] += 1
-            labelsArray[5].text = "\(emoArray[5].0) \(countArray[5])"
+            let currentValue = UserDefaults.standard.integer(forKey: "emotion5")
+            let updateValue = currentValue + 1
+            UserDefaults.standard.set(updateValue, forKey: "emotion5")
+            labelsArray[5].text = "\(emoArray[5].0) \(UserDefaults.standard.integer(forKey: "emotion5"))"
         case emoArray[6].0:
-            countArray[6] += 1
-            labelsArray[6].text = "\(emoArray[6].0) \(countArray[6])"
+            let currentValue = UserDefaults.standard.integer(forKey: "emotion6")
+            let updateValue = currentValue + 1
+            UserDefaults.standard.set(updateValue, forKey: "emotion6")
+            labelsArray[6].text = "\(emoArray[6].0) \(UserDefaults.standard.integer(forKey: "emotion6"))"
         case emoArray[7].0:
-            countArray[7] += 1
-            labelsArray[7].text = "\(emoArray[7].0) \(countArray[7])"
+            let currentValue = UserDefaults.standard.integer(forKey: "emotion7")
+            let updateValue = currentValue + 1
+            UserDefaults.standard.set(updateValue, forKey: "emotion7")
+            labelsArray[7].text = "\(emoArray[7].0) \(UserDefaults.standard.integer(forKey: "emotion7"))"
         case emoArray[8].0:
-            countArray[8] += 1
-            labelsArray[8].text = "\(emoArray[8].0) \(countArray[8])"
+            let currentValue = UserDefaults.standard.integer(forKey: "emotion8")
+            let updateValue = currentValue + 1
+            UserDefaults.standard.set(updateValue, forKey: "emotion8")
+            labelsArray[8].text = "\(emoArray[8].0) \(UserDefaults.standard.integer(forKey: "emotion8"))"
         default:
             break
         }
