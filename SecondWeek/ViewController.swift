@@ -59,19 +59,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var nineLabel: UILabel!
     @IBOutlet var labelsArray: [UILabel]!
     
-//    var countArray: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    var countArray: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     
 //    var counts: Int = 0
 
-    var emoArray = [(Emotions.행복해.rawValue, Emotions.행복해.description, 0),
-                    (Emotions.사랑해.rawValue, Emotions.사랑해.description, 0),
-                    (Emotions.좋아해.rawValue, Emotions.좋아해.description, 0),
-                    (Emotions.당황해.rawValue, Emotions.당황해.description, 0),
-                    (Emotions.속상해.rawValue, Emotions.속상해.description, 0),
-                    (Emotions.우울해.rawValue, Emotions.우울해.description, 0),
-                    (Emotions.심심해.rawValue, Emotions.심심해.description, 0),
-                    (Emotions.아파해.rawValue, Emotions.아파해.description, 0),
-                    (Emotions.슬퍼해.rawValue, Emotions.슬퍼해.description, 0)]
+    var emoArray = [(Emotions.행복해.rawValue, Emotions.행복해.description),
+                    (Emotions.사랑해.rawValue, Emotions.사랑해.description),
+                    (Emotions.좋아해.rawValue, Emotions.좋아해.description),
+                    (Emotions.당황해.rawValue, Emotions.당황해.description),
+                    (Emotions.속상해.rawValue, Emotions.속상해.description),
+                    (Emotions.우울해.rawValue, Emotions.우울해.description),
+                    (Emotions.심심해.rawValue, Emotions.심심해.description),
+                    (Emotions.아파해.rawValue, Emotions.아파해.description),
+                    (Emotions.슬퍼해.rawValue, Emotions.슬퍼해.description)]
     
     
     // MARK: - Init
@@ -116,15 +116,15 @@ class ViewController: UIViewController {
         configureButtons(eightImageButton, image: emoArray[7].1, title: emoArray[7].0)
         configureButtons(nineImageButton, image: emoArray[8].1, title: emoArray[8].0)
 
-        configureLabels(oneLabel, emotion: emoArray[0].0, counts: emoArray[0].2)
-        configureLabels(twoLabel, emotion: emoArray[1].0, counts: emoArray[1].2)
-        configureLabels(threeLabel, emotion: emoArray[2].0, counts: emoArray[2].2)
-        configureLabels(fourLabel, emotion: emoArray[3].0, counts: emoArray[3].2)
-        configureLabels(fiveLabel, emotion: emoArray[4].0, counts: emoArray[4].2)
-        configureLabels(sixLabel, emotion: emoArray[5].0, counts: emoArray[5].2)
-        configureLabels(sevenLabel, emotion: emoArray[6].0, counts: emoArray[6].2)
-        configureLabels(eightLabel, emotion: emoArray[7].0, counts: emoArray[7].2)
-        configureLabels(nineLabel, emotion: emoArray[8].0, counts: emoArray[8].2)
+        configureLabels(oneLabel, emotion: emoArray[0].0, counts: countArray[0])
+        configureLabels(twoLabel, emotion: emoArray[1].0, counts: countArray[1])
+        configureLabels(threeLabel, emotion: emoArray[2].0, counts: countArray[2])
+        configureLabels(fourLabel, emotion: emoArray[3].0, counts: countArray[3])
+        configureLabels(fiveLabel, emotion: emoArray[4].0, counts: countArray[4])
+        configureLabels(sixLabel, emotion: emoArray[5].0, counts: countArray[5])
+        configureLabels(sevenLabel, emotion: emoArray[6].0, counts: countArray[6])
+        configureLabels(eightLabel, emotion: emoArray[7].0, counts: countArray[7])
+        configureLabels(nineLabel, emotion: emoArray[8].0, counts: countArray[8])
 
 //        let dic = [oneImageButton: 1, twoImageButton: 2, threeImageButton: 3, fourImageButton: 4, fiveImageButton: 5, sixImageButton: 6, sevenImageButton: 7, eightImageButton: 8, nineImageButton: 9]
 //
@@ -159,7 +159,19 @@ class ViewController: UIViewController {
 //            counts += 1
 //        }
         
-
+        
+        if UserDefaults.standard.array(forKey: "emotion counts") != nil {
+            
+            for i in 0...8 {
+                labelsArray[i].text = "\(emoArray[i].0) \(UserDefaults.standard.array(forKey: "emotion counts")?[i] ?? 0)"
+            }
+            
+        } else {
+            
+            for i in 0...8 {
+                labelsArray[i].text = "\(i)"
+            }
+        }
     }
     
     func configureButtons(_ button: UIButton, image: String, title: String) {
@@ -174,26 +186,28 @@ class ViewController: UIViewController {
         label.textAlignment = .center
     }
     
-//    func showAlertController() {
-//    //  흰 바탕 - UIAlertController
-//        let alert = UIAlertController(title: "타이틀", message: "메시지 자리", preferredStyle: .actionSheet)
-//
-//    //  버튼
-//        let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
-//        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-//        let delete = UIAlertAction(title: "삭제", style: .destructive, handler: nil)
-//        let copy = UIAlertAction(title: "복사", style: .default, handler: nil)
-//
-//    //  1+2
-//        alert.addAction(delete)
-//        alert.addAction(copy)
-//        alert.addAction(cancel)
-//        alert.addAction(ok)
-//
-//    //  present
-//        present(alert, animated: true, completion: nil)
-//    }
-//
+    func showAlertController() {
+    //  흰 바탕 - UIAlertController
+        let alert = UIAlertController(title: "데이터 저장", message: "하시겠습니까?", preferredStyle: .actionSheet)
+
+    //  버튼
+        let ok = UIAlertAction(title: "확인", style: .default) { action -> Void in
+            UserDefaults.standard.set(self.countArray, forKey: "emotion counts")
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let delete = UIAlertAction(title: "삭제", style: .destructive, handler: nil)
+        let copy = UIAlertAction(title: "복사", style: .default, handler: nil)
+
+    //  1+2
+        alert.addAction(delete)
+        alert.addAction(copy)
+        alert.addAction(cancel)
+        alert.addAction(ok)
+
+    //  present
+        present(alert, animated: true, completion: nil)
+    }
+
     
     // MARK: - IBActions
     
@@ -236,32 +250,32 @@ class ViewController: UIViewController {
         
         switch sender.currentTitle ?? "" {
         case emoArray[0].0:
-            emoArray[0].2 += 1
-            labelsArray[0].text = "\(emoArray[0].0) \(emoArray[0].2)"
+            countArray[0] += 1
+            labelsArray[0].text = "\(emoArray[0].0) \(countArray[0])"
         case emoArray[1].0:
-            emoArray[1].2 += 1
-            labelsArray[1].text = "\(emoArray[1].0) \(emoArray[1].2)"
+            countArray[1] += 1
+            labelsArray[1].text = "\(emoArray[1].0) \(countArray[1])"
         case emoArray[2].0:
-            emoArray[2].2 += 1
-            labelsArray[2].text = "\(emoArray[2].0) \(emoArray[2].2)"
+            countArray[2] += 1
+            labelsArray[2].text = "\(emoArray[2].0) \(countArray[2])"
         case emoArray[3].0:
-            emoArray[3].2 += 1
-            labelsArray[3].text = "\(emoArray[3].0) \(emoArray[3].2)"
+            countArray[3] += 1
+            labelsArray[3].text = "\(emoArray[3].0) \(countArray[3])"
         case emoArray[4].0:
-            emoArray[4].2 += 1
-            labelsArray[4].text = "\(emoArray[4].0) \(emoArray[4].2)"
+            countArray[4] += 1
+            labelsArray[4].text = "\(emoArray[4].0) \(countArray[4])"
         case emoArray[5].0:
-            emoArray[5].2 += 1
-            labelsArray[5].text = "\(emoArray[5].0) \(emoArray[5].2)"
+            countArray[5] += 1
+            labelsArray[5].text = "\(emoArray[5].0) \(countArray[5])"
         case emoArray[6].0:
-            emoArray[6].2 += 1
-            labelsArray[6].text = "\(emoArray[6].0) \(emoArray[6].2)"
+            countArray[6] += 1
+            labelsArray[6].text = "\(emoArray[6].0) \(countArray[6])"
         case emoArray[7].0:
-            emoArray[7].2 += 1
-            labelsArray[7].text = "\(emoArray[7].0) \(emoArray[7].2)"
+            countArray[7] += 1
+            labelsArray[7].text = "\(emoArray[7].0) \(countArray[7])"
         case emoArray[8].0:
-            emoArray[8].2 += 1
-            labelsArray[8].text = "\(emoArray[8].0) \(emoArray[8].2)"
+            countArray[8] += 1
+            labelsArray[8].text = "\(emoArray[8].0) \(countArray[8])"
         default:
             break
         }
@@ -297,13 +311,13 @@ class ViewController: UIViewController {
 //        default:
 //            break
 //        }
-        
-//        showAlertController()
+
     }
     
-    
-    
-    
-    
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        showAlertController()
+    }
+
+ 
 }
 
