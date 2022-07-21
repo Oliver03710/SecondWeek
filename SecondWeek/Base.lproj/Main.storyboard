@@ -23,7 +23,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v3x-bC-PNh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="356" y="1104"/>
+            <point key="canvasLocation" x="-86" y="1090"/>
         </scene>
         <!--감정 다이어리-->
         <scene sceneID="3TB-ha-CGt">
@@ -215,6 +215,17 @@
                                     <segue destination="mRf-v0-Gz0" kind="show" id="WDc-mk-RwT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9A-zz-NnH">
+                                <rect key="frame" x="172.5" y="164" width="69" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.55686277149999996" green="0.1607843041" blue="0.14509806040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="gMh-OE-H1k" eventType="touchUpInside" id="pGv-aI-Pk9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3cO-vR-jJL"/>
                         <color key="backgroundColor" systemColor="systemBrownColor"/>
@@ -223,6 +234,8 @@
                             <constraint firstItem="GyV-nX-hCr" firstAttribute="top" secondItem="3cO-vR-jJL" secondAttribute="top" id="7BM-ZW-xzZ"/>
                             <constraint firstItem="MVY-vT-aKX" firstAttribute="leading" secondItem="0Cc-8H-lf6" secondAttribute="trailing" constant="16" id="DdU-en-UcK"/>
                             <constraint firstItem="0Cc-8H-lf6" firstAttribute="leading" secondItem="Xbs-k7-3sm" secondAttribute="trailing" constant="16" id="KID-XK-8FI"/>
+                            <constraint firstItem="0Cc-8H-lf6" firstAttribute="top" secondItem="m9A-zz-NnH" secondAttribute="bottom" constant="30" id="MXx-BS-zMc"/>
+                            <constraint firstItem="m9A-zz-NnH" firstAttribute="centerX" secondItem="WZA-EC-JFW" secondAttribute="centerX" id="VsZ-Bc-dHo"/>
                             <constraint firstItem="GyV-nX-hCr" firstAttribute="centerX" secondItem="WZA-EC-JFW" secondAttribute="centerX" id="X5X-lu-0g9"/>
                             <constraint firstItem="Xbs-k7-3sm" firstAttribute="width" secondItem="0Cc-8H-lf6" secondAttribute="width" id="YjL-lm-fmF"/>
                             <constraint firstItem="Xbs-k7-3sm" firstAttribute="height" secondItem="0Cc-8H-lf6" secondAttribute="height" id="d4z-S0-2HD"/>
@@ -362,7 +375,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7VQ-sC-yFk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1895.6521739130437" y="1101.5625"/>
+            <point key="canvasLocation" x="1897" y="1090"/>
         </scene>
     </scenes>
     <resources>
